@@ -10,14 +10,24 @@ import Cocoa
 
 class ViewController: NSViewController, NSControlTextEditingDelegate {
 	
+	lazy var installProcess = NetworkInstallProcess(onOutput: { self.logLineStrings.append($0) })
 	
 	@IBOutlet var filePathLabel: NSTextField!
 	@IBOutlet var switchIPAddressField: NSTextField!
 	@IBOutlet var installButton: NSButton!
 	@IBOutlet var logView: NSTextView!
 	
-	var selectedFileURL: URL?
-	var logLineStrings: [String] = []
+	var selectedFileURL: URL? {
+		didSet {
+			filePathLabel.stringValue = selectedFileURL?.displayableString ?? "No file selected..."
+		}
+	}
+	
+	var logLineStrings: [String] = [] {
+		didSet {
+			logView.string = logLineStrings.joined(separator: "\n")
+		}
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,67 +51,39 @@ class ViewController: NSViewController, NSControlTextEditingDelegate {
 	}
 	
 	private func updateInstallButton() {
-		filePathLabel.stringValue = (selectedFileURL as NSURL?)?.resourceSpecifier?.removingPercentEncoding ?? "No file selected..."
-		
 		let fileSelected = (selectedFileURL != nil)
-		
-		let ipAddressString = switchIPAddressField.stringValue
-		let ipAddressRegex = try! NSRegularExpression(pattern: "\\d+\\.\\d+\\.\\d+\\.\\d+")
-		let stringRange = NSRange(location: 0, length: ipAddressString.utf16.count)
-		
-		let matchRange = ipAddressRegex.rangeOfFirstMatch(in: switchIPAddressField.stringValue, options: NSRegularExpression.MatchingOptions.anchored, range: stringRange)
-		
-		let validIPAddressEntered = matchRange == stringRange
+		let validIPAddressEntered = switchIPAddressField.stringValue.isValidIPAddress
 		
 		installButton.isEnabled = (fileSelected && validIPAddressEntered)
 	}
 	
 	@IBAction func installButtonTapped(sender: NSButton) {
 		logLineStrings.removeAll()
-		updateLogTextView()
 		
 		let urlString = (selectedFileURL! as NSURL).resourceSpecifier!.removingPercentEncoding!
 		runNetworkInstall(filePath: urlString, ipAddress: switchIPAddressField.stringValue)
 	}
 	
 	func runNetworkInstall(filePath: String, ipAddress: String) {
-		print(filePath, ipAddress)
-		let scriptPath = Bundle.main.path(forResource: "remote_install_pc", ofType: "py")!
-		shell(launchPath: "/usr/local/bin/python3", args: scriptPath, ipAddress, filePath, onOutput: {
-			self.logLineStrings.append($0)
-			self.updateLogTextView()
-		})
-	}
-	
-	private func updateLogTextView() {
-		logView.string = logLineStrings.joined(separator: "\n")
+		installProcess.launch(withIPAddress: ipAddress, filePath: filePath)
 	}
 }
 
-extension ViewController {
-	func shell(launchPath: String, args: String..., onOutput: @escaping (String) -> Void) {
-		let task = Process()
-		task.launchPath = launchPath
-		task.arguments = args
-		
-		let pipe = Pipe()
-		task.standardOutput = pipe
-		task.standardError = pipe
-		let outHandle = pipe.fileHandleForReading
-		outHandle.waitForDataInBackgroundAndNotify()
-		
-		NotificationCenter.default.addObserver(
-			forName: NSNotification.Name.NSFileHandleDataAvailable,
-			object: outHandle, queue: nil) {  notification -> Void in
-				let data = outHandle.availableData
-				if data.count > 0 {
-					if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-						onOutput(str as String)
-					}
-					outHandle.waitForDataInBackgroundAndNotify()
-				}
-		}
-		
-		task.launch()
+class NetworkInstallProcess: ShellProcess {
+	override init(launchPath: String, args: [String]?, onOutput: ((String) -> Void)?) {
+		fatalError("Use `init()`")
+	}
+	
+	init(onOutput: ((String) -> Void)? = nil) {
+		super.init(launchPath: "/usr/local/bin/python3", args: nil, onOutput: onOutput)
+	}
+	
+	override func launch(_ withArgs: [String]?) {
+		fatalError("Use `launch(withIPAddress ipAddress: String, filePath: String)`")
+	}
+	
+	func launch(withIPAddress ipAddress: String, filePath: String) {
+		let scriptPath = Bundle.main.path(forResource: "remote_install_pc", ofType: "py")!
+		super.launch([scriptPath, ipAddress, filePath])
 	}
 }

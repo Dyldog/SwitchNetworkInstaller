@@ -12,6 +12,9 @@
 		62134A2521D8C475009B8B63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62134A2421D8C475009B8B63 /* Assets.xcassets */; };
 		62134A2821D8C475009B8B63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62134A2621D8C475009B8B63 /* Main.storyboard */; };
 		62134A3121D8CB0F009B8B63 /* remote_install_pc.py in Resources */ = {isa = PBXBuildFile; fileRef = 62134A3021D8CB0F009B8B63 /* remote_install_pc.py */; };
+		62F2133821DB2D5900203DD5 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F2133721DB2D5900203DD5 /* URL+Extensions.swift */; };
+		62F2133A21DB2D6E00203DD5 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F2133921DB2D6E00203DD5 /* String+Extensions.swift */; };
+		62F2133C21DB2D8500203DD5 /* ShellProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F2133B21DB2D8500203DD5 /* ShellProcess.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		62134A2921D8C475009B8B63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62134A3021D8CB0F009B8B63 /* remote_install_pc.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = remote_install_pc.py; sourceTree = "<group>"; };
 		62134A3321D8D1A0009B8B63 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = System/Library/Frameworks/Python.framework; sourceTree = SDKROOT; };
+		62F2133721DB2D5900203DD5 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		62F2133921DB2D6E00203DD5 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		62F2133B21DB2D8500203DD5 /* ShellProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellProcess.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,9 @@
 			children = (
 				62134A2021D8C475009B8B63 /* AppDelegate.swift */,
 				62134A2221D8C475009B8B63 /* ViewController.swift */,
+				62F2133921DB2D6E00203DD5 /* String+Extensions.swift */,
+				62F2133721DB2D5900203DD5 /* URL+Extensions.swift */,
+				62F2133B21DB2D8500203DD5 /* ShellProcess.swift */,
 				62134A2421D8C475009B8B63 /* Assets.xcassets */,
 				62134A2621D8C475009B8B63 /* Main.storyboard */,
 				62134A2921D8C475009B8B63 /* Info.plist */,
@@ -145,7 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F2133A21DB2D6E00203DD5 /* String+Extensions.swift in Sources */,
+				62F2133C21DB2D8500203DD5 /* ShellProcess.swift in Sources */,
 				62134A2321D8C475009B8B63 /* ViewController.swift in Sources */,
+				62F2133821DB2D5900203DD5 /* URL+Extensions.swift in Sources */,
 				62134A2121D8C475009B8B63 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
