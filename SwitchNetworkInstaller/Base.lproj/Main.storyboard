@@ -706,27 +706,39 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="SwitchNetworkInstaller" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="144"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="264"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xEk-JP-2D4">
-                                <rect key="frame" x="20" y="20" width="440" height="104"/>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eeN-97-roJ">
+                                <rect key="frame" x="447" y="144" width="13" height="13"/>
+                                <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OZa-BG-IWB">
+                                    <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xEk-JP-2D4">
+                                <rect key="frame" x="20" y="20" width="440" height="224"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="94" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P6X-gA-vc5">
-                                        <rect key="frame" x="0.0" y="83" width="440" height="21"/>
+                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="bottom" spacing="10" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P6X-gA-vc5">
+                                        <rect key="frame" x="0.0" y="203" width="440" height="21"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oU3-1j-dYE">
-                                                <rect key="frame" x="-2" y="0.0" width="250" height="21"/>
+                                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="oU3-1j-dYE">
+                                                <rect key="frame" x="-2" y="0.0" width="334" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="Ndr-s6-coN"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="s2b-e7-EJD"/>
+                                                </constraints>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="No file selected..." id="wMt-a7-CeS">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nYL-rO-bSN">
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nYL-rO-bSN">
                                                 <rect key="frame" x="334" y="-7" width="112" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="1ES-mO-VF9"/>
+                                                    <constraint firstAttribute="height" constant="21" id="qLm-V8-YXR"/>
                                                 </constraints>
                                                 <buttonCell key="cell" type="push" title="Select File" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FT8-C7-qIR">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -746,8 +758,11 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Cp-pA-sKr">
-                                        <rect key="frame" x="0.0" y="41" width="440" height="22"/>
+                                    <textField verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="0Cp-pA-sKr">
+                                        <rect key="frame" x="0.0" y="161" width="440" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="PdL-q9-mde"/>
+                                        </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="Switch IP Address" drawsBackground="YES" id="UAm-Jz-lqk">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -758,7 +773,10 @@
                                         </connections>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="13q-hq-4hc">
-                                        <rect key="frame" x="182" y="-7" width="76" height="32"/>
+                                        <rect key="frame" x="182" y="113" width="76" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="3cF-gI-KTO"/>
+                                        </constraints>
                                         <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EEc-DU-GXO">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -767,9 +785,36 @@
                                             <action selector="installButtonTappedWithSender:" target="XfG-lQ-9wD" id="Zwd-P8-HTF"/>
                                         </connections>
                                     </button>
+                                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlk-Fa-JVU">
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="100"/>
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zfF-gd-Cdo">
+                                            <rect key="frame" x="1" y="1" width="438" height="98"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="rhj-UT-yu2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="438" height="98"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <size key="minSize" width="438" height="98"/>
+                                                    <size key="maxSize" width="440" height="10000000"/>
+                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                        </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="tdj-Az-DCl"/>
+                                        </constraints>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="xgZ-2T-oKf">
+                                            <rect key="frame" x="423" y="1" width="16" height="98"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Qlk-Fa-JVU" secondAttribute="trailing" id="GJa-QK-aEi"/>
                                     <constraint firstItem="0Cp-pA-sKr" firstAttribute="leading" secondItem="xEk-JP-2D4" secondAttribute="leading" id="HXa-V7-0J8"/>
+                                    <constraint firstItem="Qlk-Fa-JVU" firstAttribute="leading" secondItem="xEk-JP-2D4" secondAttribute="leading" id="N3z-x2-dEh"/>
                                     <constraint firstItem="P6X-gA-vc5" firstAttribute="leading" secondItem="xEk-JP-2D4" secondAttribute="leading" id="sQC-jy-9lP"/>
                                     <constraint firstAttribute="trailing" secondItem="0Cp-pA-sKr" secondAttribute="trailing" id="vLr-Xc-Gp1"/>
                                     <constraint firstAttribute="trailing" secondItem="P6X-gA-vc5" secondAttribute="trailing" id="zqq-qn-z5U"/>
@@ -778,8 +823,10 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -790,12 +837,15 @@
                             <constraint firstAttribute="trailing" secondItem="xEk-JP-2D4" secondAttribute="trailing" constant="20" id="5Eb-hU-GE7"/>
                             <constraint firstItem="xEk-JP-2D4" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="CvQ-Pe-WJQ"/>
                             <constraint firstItem="xEk-JP-2D4" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="D0B-Jq-yhH"/>
+                            <constraint firstItem="13q-hq-4hc" firstAttribute="centerY" secondItem="eeN-97-roJ" secondAttribute="centerY" id="ICF-wL-19K"/>
                             <constraint firstAttribute="bottom" secondItem="xEk-JP-2D4" secondAttribute="bottom" constant="20" id="QMp-Js-4MK"/>
+                            <constraint firstItem="eeN-97-roJ" firstAttribute="trailing" secondItem="xEk-JP-2D4" secondAttribute="trailing" id="Zus-gZ-wxf"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="filePathLabel" destination="oU3-1j-dYE" id="K0W-C7-xsM"/>
                         <outlet property="installButton" destination="13q-hq-4hc" id="xst-pj-a37"/>
+                        <outlet property="logView" destination="rhj-UT-yu2" id="zWc-su-GRr"/>
                         <outlet property="switchIPAddressField" destination="0Cp-pA-sKr" id="Bbp-gc-tgw"/>
                     </connections>
                 </viewController>
